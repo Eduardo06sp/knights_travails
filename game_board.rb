@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class GameBoard
+  attr_reader :spaces
+
   def initialize
     @spaces = create_board
   end
