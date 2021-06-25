@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class GameBoard
-  def intialize
+  def initialize
     @spaces = create_board
   end
 
