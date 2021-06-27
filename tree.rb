@@ -7,4 +7,14 @@ class Tree
   def initialize
     @root = build_tree
   end
+
+  def build_tree
+    start = gets.chomp
+
+    until start.match?(/\[[0-7], [0-7]\]/)
+      puts 'Please enter a valid coordinate ([0, 0] to [7, 7])'
+
+      start = gets.chomp
+    end
+  end
 end
