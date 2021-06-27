@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'knight'
+
 class GameBoard
   attr_reader :spaces
 
