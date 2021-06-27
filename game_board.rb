@@ -31,4 +31,10 @@ class GameBoard
 
     spaces
   end
+
+  def all_possible_moves(piece)
+    spaces.map do |space|
+      piece.possible_moves(space)
+    end
+  end
 end
