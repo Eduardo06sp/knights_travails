@@ -16,5 +16,10 @@ class Tree
 
       start = gets.chomp
     end
+
+    x = start[0].to_i
+    y = start[3].to_i
+
+    start_index = board.spaces.index([x, y])
   end
 end
