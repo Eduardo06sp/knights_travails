@@ -21,5 +21,9 @@ class Tree
     y = start[3].to_i
 
     start_index = board.spaces.index([x, y])
+    create_branches(board.spaces[start_index])
+  end
+
+  def create_branches(start)
   end
 end
