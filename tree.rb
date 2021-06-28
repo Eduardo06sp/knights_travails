@@ -24,6 +24,6 @@ class Tree
     create_branches(board.spaces[start_index])
   end
 
-  def create_branches(start)
+  def create_branches(start, predecessor = nil)
   end
 end
