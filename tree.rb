@@ -17,15 +17,27 @@ class Tree
       start = gets.chomp
     end
 
-    x = start[0].to_i
-    y = start[3].to_i
+    stop = gets.chomp
 
-    start_index = board.spaces.index([x, y])
-    create_branches(board, start_index, possible_moves)
+    until stop.match?(/[0-7], [0-7]/)
+      puts 'Please enter a valid coordinate (0, 0 to 7, 7)'
+
+      stop = gets.chomp
+    end
+
+    start_x = start[0].to_i
+    start_y = start[3].to_i
+    stop_x = stop[0].to_i
+    stop_y = stop[3].to_i
+
+    start_index = board.spaces.index([start_x, start_y])
+    stop_index = board.spaces.index([stop_x, stop_y])
+    create_branches(board, start_index, stop_index, possible_moves)
   end
 
-  def create_branches(board, start_index, possible_moves, predecessor = nil, visited = [])
+  def create_branches(board, start_index, stop_index, possible_moves, predecessor = nil, visited = [])
     return if visited.include?(board.spaces[start_index])
+    return if visited.include?(board.spaces[stop_index])
 
     root = Node.new(board.spaces[start_index])
     root.predecessor = predecessor
@@ -35,35 +47,35 @@ class Tree
     current_possible_moves = possible_moves[start_index]
 
     if current_possible_moves[0]
-      root.move_one = create_branches(board, board.spaces.index(current_possible_moves[0]), possible_moves, root, visited)
+      root.move_one = create_branches(board, board.spaces.index(current_possible_moves[0]), stop_index, possible_moves, root, visited)
     end
 
     if current_possible_moves[1]
-      root.move_two = create_branches(board, board.spaces.index(current_possible_moves[1]), possible_moves, root, visited)
+      root.move_two = create_branches(board, board.spaces.index(current_possible_moves[1]), stop_index, possible_moves, root, visited)
     end
 
     if current_possible_moves[2]
-      root.move_three = create_branches(board, board.spaces.index(current_possible_moves[2]), possible_moves, root, visited)
+      root.move_three = create_branches(board, board.spaces.index(current_possible_moves[2]), stop_index, possible_moves, root, visited)
     end
 
     if current_possible_moves[3]
-      root.move_four = create_branches(board, board.spaces.index(current_possible_moves[3]), possible_moves, root, visited)
+      root.move_four = create_branches(board, board.spaces.index(current_possible_moves[3]), stop_index, possible_moves, root, visited)
     end
 
     if current_possible_moves[4]
-      root.move_five = create_branches(board, board.spaces.index(current_possible_moves[4]), possible_moves, root, visited)
+      root.move_five = create_branches(board, board.spaces.index(current_possible_moves[4]), stop_index, possible_moves, root, visited)
     end
 
     if current_possible_moves[5]
-      root.move_six = create_branches(board, board.spaces.index(current_possible_moves[5]), possible_moves, root, visited)
+      root.move_six = create_branches(board, board.spaces.index(current_possible_moves[5]), stop_index, possible_moves, root, visited)
     end
 
     if current_possible_moves[6]
-      root.move_seven = create_branches(board, board.spaces.index(current_possible_moves[6]), possible_moves, root, visited)
+      root.move_seven = create_branches(board, board.spaces.index(current_possible_moves[6]), stop_index, possible_moves, root, visited)
     end
 
     if current_possible_moves[7]
-      root.move_eight = create_branches(board, board.spaces.index(current_possible_moves[7]), possible_moves, root, visited)
+      root.move_eight = create_branches(board, board.spaces.index(current_possible_moves[7]), stop_index, possible_moves, root, visited)
     end
 
     root
