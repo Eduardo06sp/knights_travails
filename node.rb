@@ -1,7 +1,25 @@
 # frozen_string_literal: true
 
 class Node
-  def initialize(coordinates, possible_moves)
+  attr_accessor :value,
+                :move_one,
+                :move_two,
+                :move_three,
+                :move_four,
+                :move_five,
+                :move_six,
+                :move_seven,
+                :move_eight
+
+  def initialize(coordinates)
     @value = coordinates
+    @move_one = nil
+    @move_two = nil
+    @move_three = nil
+    @move_four = nil
+    @move_five = nil
+    @move_six = nil
+    @move_seven = nil
+    @move_eight = nil
   end
 end
