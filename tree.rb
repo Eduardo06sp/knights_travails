@@ -21,9 +21,17 @@ class Tree
     y = start[3].to_i
 
     start_index = board.spaces.index([x, y])
-    create_branches(start_index, possible_moves)
+    create_branches(board, start_index, possible_moves)
   end
 
-  def create_branches(start_index, possible_moves, predecessor = nil)
+  def create_branches(board, start_index, possible_moves, predecessor = nil)
+    root = Node.new(board.spaces[start_index], possible_moves[start_index])
+
+    p root.value
   end
 end
+
+test_board = GameBoard.new
+test_piece = Knight.new
+test_moves = test_board.all_possible_moves(test_piece)
+test = Tree.new(test_board, test_moves)
