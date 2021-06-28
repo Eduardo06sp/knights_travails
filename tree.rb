@@ -11,8 +11,8 @@ class Tree
   def build_tree(board)
     start = gets.chomp
 
-    until start.match?(/\[[0-7], [0-7]\]/)
-      puts 'Please enter a valid coordinate ([0, 0] to [7, 7])'
+    until start.match?(/[0-7], [0-7]/)
+      puts 'Please enter a valid coordinate (0, 0 to 7, 7)'
 
       start = gets.chomp
     end
