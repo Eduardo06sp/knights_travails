@@ -4,11 +4,11 @@ require_relative 'game_board'
 require_relative 'node'
 
 class Tree
-  def initialize(board)
-    @root = build_tree(board)
+  def initialize(board, possible_moves)
+    @root = build_tree(board, possible_moves)
   end
 
-  def build_tree(board)
+  def build_tree(board, possible_moves)
     start = gets.chomp
 
     until start.match?(/[0-7], [0-7]/)
@@ -21,9 +21,9 @@ class Tree
     y = start[3].to_i
 
     start_index = board.spaces.index([x, y])
-    create_branches(board.spaces[start_index])
+    create_branches(board.spaces[start_index], possible_moves)
   end
 
-  def create_branches(start, predecessor = nil)
+  def create_branches(start, possible_moves, predecessor = nil)
   end
 end
