@@ -2,6 +2,7 @@
 
 class Node
   attr_accessor :value,
+                :predecessor,
                 :move_one,
                 :move_two,
                 :move_three,
@@ -13,6 +14,7 @@ class Node
 
   def initialize(coordinates)
     @value = coordinates
+    @predecessor = nil
     @move_one = nil
     @move_two = nil
     @move_three = nil
