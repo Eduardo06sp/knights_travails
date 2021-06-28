@@ -4,6 +4,8 @@ require_relative 'game_board'
 require_relative 'node'
 
 class Tree
+  attr_reader :root
+
   def initialize(board, possible_moves)
     @root = build_tree(board, possible_moves)
   end
