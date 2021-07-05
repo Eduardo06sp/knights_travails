@@ -97,10 +97,13 @@ class Tree
   def shortest_path(stop_x, stop_y)
     target = level_order(stop_x, stop_y)
     tmp = target
+    path = []
 
     until tmp.nil?
-      p "SEARCHING; #{tmp.value}"
+      path.push(tmp.value)
       tmp = tmp.predecessor
     end
+
+    path.reverse.each { |coordinate| p coordinate }
   end
 end
