@@ -96,6 +96,25 @@ class Tree
 
     queue.first
   end
+
+  def level_order(queue = [self.root])
+    return "NO DICE" if queue.first.nil?
+    return queue.first if queue.first.value == [4, 3]
+
+    current = queue.first
+
+
+    queue.push(current.move_one) if current.move_one
+    queue.push(current.move_two) if current.move_two
+    queue.push(current.move_three) if current.move_three
+    queue.push(current.move_four) if current.move_four
+    queue.push(current.move_five) if current.move_five
+    queue.push(current.move_six) if current.move_six
+    queue.push(current.move_seven) if current.move_seven
+    queue.push(current.move_eight) if current.move_eight
+
+    level_order(queue[1..-1])
+  end
 end
 
 test_board = GameBoard.new
