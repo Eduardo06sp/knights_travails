@@ -115,6 +115,16 @@ class Tree
 
     level_order(queue[1..-1])
   end
+
+  def shortest_path
+    target = level_order
+    tmp = target
+
+    until tmp.nil?
+      p "SEARCHING; #{tmp.value}"
+      tmp = tmp.predecessor
+    end
+  end
 end
 
 test_board = GameBoard.new
