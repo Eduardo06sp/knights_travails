@@ -32,3 +32,5 @@ def intro
   test = Tree.new(test_board, test_moves, start_x, start_y, stop_x, stop_y)
   test.shortest_path
 end
+
+intro
