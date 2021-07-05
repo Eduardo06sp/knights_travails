@@ -25,10 +25,10 @@ def intro
   start_y = start[3].to_i
   stop_x = stop[0].to_i
   stop_y = stop[3].to_i
-end
 
-test_board = GameBoard.new
-test_piece = Knight.new
-test_moves = test_board.all_possible_moves(test_piece)
-test = Tree.new(test_board, test_moves)
-test.shortest_path
+  test_board = GameBoard.new
+  test_piece = Knight.new
+  test_moves = test_board.all_possible_moves(test_piece)
+  test = Tree.new(test_board, test_moves, start_x, start_y, stop_x, stop_y)
+  test.shortest_path
+end
