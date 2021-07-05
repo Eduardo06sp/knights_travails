@@ -6,11 +6,11 @@ require_relative 'node'
 class Tree
   attr_reader :root
 
-  def initialize(board, possible_moves)
-    @root = build_tree(board, possible_moves)
+  def initialize(board, possible_moves, start_x, start_y, stop_x, stop_y)
+    @root = build_tree(board, possible_moves, start_x, start_y, stop_x, stop_y)
   end
 
-  def build_tree(board, possible_moves)
+  def build_tree(board, possible_moves, start_x, start_y, stop_x, stop_y)
     stop_index = board.spaces.index([stop_x, stop_y])
     create_branches(board, stop_index, possible_moves, [Node.new([start_x, start_y], nil)])
   end
