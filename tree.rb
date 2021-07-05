@@ -34,53 +34,67 @@ class Tree
 
     start_index = board.spaces.index([start_x, start_y])
     stop_index = board.spaces.index([stop_x, stop_y])
-    create_branches(board, start_index, stop_index, possible_moves)
+    create_branches(board, stop_index, possible_moves, [Node.new([start_x, start_y], nil)])
   end
 
-  def create_branches(board, start_index, stop_index, possible_moves, predecessor = nil, visited = [])
-    return if visited.include?(board.spaces[start_index])
+  def create_branches(board, stop_index, possible_moves, queue, visited = [])
     return if visited.include?(board.spaces[stop_index])
 
-    root = Node.new(board.spaces[start_index])
-    root.predecessor = predecessor
+    new_queue = []
 
-    visited.push(root.value)
+    queue.each do |coordinate|
+      next if visited.include?(coordinate.value)
 
-    current_possible_moves = possible_moves[start_index]
+      current_index = board.spaces.index(coordinate.value)
 
-    if current_possible_moves[0]
-      root.move_one = create_branches(board, board.spaces.index(current_possible_moves[0]), stop_index, possible_moves, root, visited)
+      current_possible_moves = possible_moves[current_index]
+
+      if current_possible_moves[0]
+        coordinate.move_one = Node.new(current_possible_moves[0], coordinate)
+        new_queue.push(coordinate.move_one)
+      end
+
+      if current_possible_moves[1]
+        coordinate.move_two = Node.new(current_possible_moves[1], coordinate)
+        new_queue.push(coordinate.move_two)
+      end
+
+      if current_possible_moves[2]
+        coordinate.move_three = Node.new(current_possible_moves[2], coordinate)
+        new_queue.push(coordinate.move_three)
+      end
+
+      if current_possible_moves[3]
+        coordinate.move_four = Node.new(current_possible_moves[3], coordinate)
+        new_queue.push(coordinate.move_four)
+      end
+
+      if current_possible_moves[4]
+        coordinate.move_five = Node.new(current_possible_moves[4], coordinate)
+        new_queue.push(coordinate.move_five)
+      end
+
+      if current_possible_moves[5]
+        coordinate.move_six = Node.new(current_possible_moves[5], coordinate)
+        new_queue.push(coordinate.move_six)
+      end
+
+      if current_possible_moves[6]
+        coordinate.move_seven = Node.new(current_possible_moves[6], coordinate)
+        new_queue.push(coordinate.move_seven)
+      end
+
+      if current_possible_moves[7]
+        coordinate.move_eight = Node.new(current_possible_moves[7], coordinate)
+        new_queue.push(coordinate.move_eight)
+      end
+
+      visited.push(coordinate.value)
     end
 
-    if current_possible_moves[1]
-      root.move_two = create_branches(board, board.spaces.index(current_possible_moves[1]), stop_index, possible_moves, root, visited)
-    end
+    create_branches(board, stop_index, possible_moves, new_queue, visited)
 
-    if current_possible_moves[2]
-      root.move_three = create_branches(board, board.spaces.index(current_possible_moves[2]), stop_index, possible_moves, root, visited)
-    end
-
-    if current_possible_moves[3]
-      root.move_four = create_branches(board, board.spaces.index(current_possible_moves[3]), stop_index, possible_moves, root, visited)
-    end
-
-    if current_possible_moves[4]
-      root.move_five = create_branches(board, board.spaces.index(current_possible_moves[4]), stop_index, possible_moves, root, visited)
-    end
-
-    if current_possible_moves[5]
-      root.move_six = create_branches(board, board.spaces.index(current_possible_moves[5]), stop_index, possible_moves, root, visited)
-    end
-
-    if current_possible_moves[6]
-      root.move_seven = create_branches(board, board.spaces.index(current_possible_moves[6]), stop_index, possible_moves, root, visited)
-    end
-
-    if current_possible_moves[7]
-      root.move_eight = create_branches(board, board.spaces.index(current_possible_moves[7]), stop_index, possible_moves, root, visited)
-    end
-
-    root
+    queue.first
   end
 end
 
