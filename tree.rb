@@ -32,7 +32,6 @@ class Tree
     stop_x = stop[0].to_i
     stop_y = stop[3].to_i
 
-    start_index = board.spaces.index([start_x, start_y])
     stop_index = board.spaces.index([stop_x, stop_y])
     create_branches(board, stop_index, possible_moves, [Node.new([start_x, start_y], nil)])
   end
