@@ -91,7 +91,7 @@ class Tree
     queue.push(current.move_seven) if current.move_seven
     queue.push(current.move_eight) if current.move_eight
 
-    level_order(queue[1..-1])
+    level_order(stop_x, stop_y, queue[1..-1])
   end
 
   def shortest_path(stop_x, stop_y)
