@@ -75,9 +75,9 @@ class Tree
     queue.first
   end
 
-  def level_order(queue = [self.root])
+  def level_order(stop_x, stop_y, queue = [self.root])
     return "NO DICE" if queue.first.nil?
-    return queue.first if queue.first.value == [4, 3]
+    return queue.first if queue.first.value == [stop_x, stop_y]
 
     current = queue.first
 
@@ -94,8 +94,8 @@ class Tree
     level_order(queue[1..-1])
   end
 
-  def shortest_path
-    target = level_order
+  def shortest_path(stop_x, stop_y)
+    target = level_order(stop_x, stop_y)
     tmp = target
 
     until tmp.nil?
