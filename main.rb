@@ -30,7 +30,7 @@ def intro
   test_piece = Knight.new
   test_moves = test_board.all_possible_moves(test_piece)
   test = Tree.new(test_board, test_moves, start_x, start_y, stop_x, stop_y)
-  test.shortest_path
+  test.shortest_path(stop_x, stop_y)
 end
 
 intro
