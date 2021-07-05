@@ -104,6 +104,13 @@ class Tree
       tmp = tmp.predecessor
     end
 
+    if path.count - 1 == 1
+      puts 'It took 1 move!'
+    else
+      puts "It took #{path.count - 1} moves!"
+    end
+
+    puts "Here's the path:"
     path.reverse.each { |coordinate| p coordinate }
   end
 end
