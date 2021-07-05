@@ -12,9 +12,9 @@ class Node
                 :move_seven,
                 :move_eight
 
-  def initialize(coordinates)
+  def initialize(coordinates, predecessor)
     @value = coordinates
-    @predecessor = nil
+    @predecessor = predecessor
     @move_one = nil
     @move_two = nil
     @move_three = nil
